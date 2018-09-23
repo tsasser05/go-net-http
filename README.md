@@ -7,6 +7,7 @@ Relies on local npm server.
 Install npm
 Install json-server:
     sudo npm install -g json-server
+
 Add some data to db.json in ~/npm
 
 Create a db.json file with some data
