@@ -2,7 +2,7 @@
 
 h3. Example code using net/http
 
-Relies on local npm server.
+Relies on local npm server. Read the docs here:  [https://jsonplaceholder.typicode.com/]
 
 1) Install npm
 2) Install json-server:
@@ -22,9 +22,10 @@ Relies on local npm server.
 }
 ```
 5) Start json-server:  
-```json-server --watch db.json
 ```
-6) Access:  http://localhost:3000/posts/1
+json-server --watch db.json
+```
+6) Access in browser:  http://localhost:3000/posts/1
   
     
     
