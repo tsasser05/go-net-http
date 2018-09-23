@@ -6,7 +6,8 @@ Relies on local npm server.
 
 1) Install npm
 2) Install json-server:
-    ```sudo npm install -g json-server```
+    ```sudo npm install -g json-server
+    ```
 3) Add some data to db.json in ~/npm
 4) Create a db.json file with some data
 ```{
@@ -17,8 +18,11 @@ Relies on local npm server.
     { "id": 1, "body": "some comment", "postId": 1 }
   ],
   "profile": { "name": "typicode" }
-}```
-5) Start json-server:  json-server --watch db.json
+}
+```
+5) Start json-server:  
+```json-server --watch db.json
+```
 6) Access:  http://localhost:3000/posts/1
   
     
