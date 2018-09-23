@@ -1,7 +1,8 @@
 # go-net-http
 
-h3. Example code using net/http
+## Example code using net/http
 
+## Installation
 Relies on local npm server. Read the docs here:  [https://jsonplaceholder.typicode.com/]
 
 1) Install npm
