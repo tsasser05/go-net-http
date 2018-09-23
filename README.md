@@ -10,8 +10,8 @@ Relies on local npm server. Read the docs here:  [https://jsonplaceholder.typico
     ```
     sudo npm install -g json-server
     ```
-3) Add some data to db.json in ~/npm
-4) Create a db.json file with some data
+3) Add some data to ~/npm/db.json
+4) Create a ~/npm/db.json file with some data
 ```{
   "posts": [
     { "id": 1, "title": "json-server", "author": "typicode" }
