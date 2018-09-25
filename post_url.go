@@ -3,11 +3,13 @@ package main
 // go run get_url.go  http://localhost:3000/posts/2 Correia
 
 import (
+	"fmt"
 	"os"
 	"net/http"
-	"log"
-	"encoding/json"
 	"bytes"
+	"encoding/json"
+	"log"
+	"io/ioutil"
 )
 
 func main() {
@@ -18,33 +20,52 @@ func main() {
 	target          := os.Args[4]
 
 	type book struct {
-		author string
-		title string
-		description string
+		Author string
+		Title string
+		Description string
 	} // book
 
-	// Another data structure:
-	//book := map[string]string{"author": authorData, "title": titleData, "description": descriptionData}
-
-	newBook := book{
-		author: authorData,
-		title:  titleData,
-		description: descriptionData,
+	newBook := &book{
+		Author: authorData,
+		Title:  titleData,
+		Description: descriptionData,
 	} // newBook
 
-	json_bytes, _ := json.Marshal(newBook)
+	jsonBook, _ := json.Marshal(newBook)
 	
-	response, err := http.Post(target, "application/json", bytes.NewBuffer(json_bytes))
+	resp, err := http.Post(target, "application/json", bytes.NewBuffer(jsonBook))
 
 	if err != nil {
 		log.Fatal(err)
 	} // if
 
-	var result map[string]interface{}
+	defer resp.Body.Close()
 
-	json.NewDecoder(response.Body).Decode(&result)
+	fmt.Println("Check HTTP response code:  ", resp.Status, "\n")
 
-	log.Println(result)
-	log.Println(result["data"])
+	body, readErr := ioutil.ReadAll(resp.Body)
+
+	if readErr != nil {
+		log.Fatal(readErr)
+	}
+	
+	var y map[string]interface{}
+	json.Unmarshal(body, &y)
+	fmt.Printf("%+v\n\n", y)	
+
+	for key, val := range y {
+		if (key == "id") {
+			continue
+		} // if
+
+		fmt.Println(key, "\t", val)
+
+		if (val == "Correia") {
+			fmt.Println("Found Correia in the response ", key, ": ", val, " \n")
+		} else {
+			fmt.Println("Did not find Correia in the response ", key, ": ", val, "\n")
+		} // if
+
+	} // for
 	
 } // main()
