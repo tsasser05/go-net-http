@@ -16,19 +16,19 @@ func main() {
 	
 	authorData      := os.Args[1]
 	titleData       := os.Args[2]
-	descriptionData := os.Args[3]
+	reviewData := os.Args[3]
 	target          := os.Args[4]
 
 	type book struct {
 		Author string
 		Title string
-		Description string
+		Review string
 	} // book
 
 	newBook := &book{
 		Author: authorData,
 		Title:  titleData,
-		Description: descriptionData,
+		Review: reviewData,
 	} // newBook
 
 	jsonBook, _ := json.Marshal(newBook)

@@ -1,6 +1,9 @@
 package main
 
-// go run get_url.go  http://localhost:3000/posts/2 Correia
+// go run search_url.go http://localhost:3000/posts/2 Correia
+
+// Default data has 1 comment = "some comment"
+// go run search_url.go http://localhost:3000/comments/1 comment
 
 import (
 	"fmt"
